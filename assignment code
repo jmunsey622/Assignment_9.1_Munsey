@@ -1,0 +1,33 @@
+# Import the os library
+import os
+
+# Prompts for user input and stores it as variable dir_Name
+dir_Name = input("Enter the name of the directory where you wish to save the new file: ")
+# Prompts for the file name of the file to be created and stores it as variable file_Name
+file_Name = input("Please enter the name of the new file: ")
+# Checks whether the directory exists if not new directory is created
+if not os.path.isdir(dir_Name):
+    os.makedirs(dir_Name)
+# Prompts user to input their name and stores it as variable user_Name
+user_Name = input("Please enter your full name: ")
+# Prompts user to input their address and stores it as variable user_Adr
+user_Adr = input("Please enter your full address: ")
+# Prompts user to input their phone # and stores it as variable user_Tx
+user_Tx = input("Please enter your phone number: ")
+# Defines the file path for the new data
+file_Data = dir_Name + file_Name
+# Creates a new file named file_Name and opens it in a write mode
+file_Data = open(os.path.join(dir_Name, file_Name), "w")
+# Write the information entered by the user each entry is seperated by a comma
+file_Data.write(user_Name + str(", ") + user_Adr + str(", ") + user_Tx)
+# Closes the new file
+file_Data.close()
+# Prints the below statement
+print("The data in the file is: ")
+# Opens the new file in read mode
+file_Data = open(os.path.join(dir_Name, file_Name), "r")
+# Prints the data in the file to the console
+print(file_Data.read())
+# Closes the new file
+file_Data.close()
+
